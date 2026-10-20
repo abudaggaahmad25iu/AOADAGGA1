@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOADAGGA STORE | كل ما تحتاجه في مكان واحد</title>
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #17324D;
+            --teal: #18A999;
+            --orange: #FF8A3D;
+            --white: #FFFFFF;
+            --light-gray: #F2F4F7;
+            --text-dark: #1E293B;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--orange);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--teal);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--teal);
+            color: var(--white);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #204366 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--orange);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: #E2E8F0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Section Generic */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #64748B;
+            font-size: 1.1rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: var(--light-gray);
+        }
+
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--teal);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        /* Featured Products */
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-img {
+            background-color: var(--light-gray);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94A3B8;
+            font-size: 3rem;
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        .product-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .product-body p {
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-weight: 800;
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background-color: var(--light-gray);
+        }
+
+        .why-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .why-box i {
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-box h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--navy);
+        }
+
+        .why-box p {
+            color: #64748B;
+        }
+
+        /* How to Order */
+        .steps-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--teal);
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .step-card p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        /* Delivery Info */
+        .delivery-section {
+            background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+            color: var(--white);
+            text-align: center;
+            border-radius: 16px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .delivery-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .delivery-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: #CBD5E1;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--navy);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.2rem 1.5rem;
+            color: #64748B;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--orange);
+        }
+
+        .footer-col p, .footer-col ul li a {
+            color: #CBD5E1;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--teal);
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo">AOADAGGA STORE</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#categories">الفئات</a></li>
+                <li><a href="#products">المنتجات المميزة</a></li>
+                <li><a href="#how-to-order">كيف تطلب</a></li>
+                <li><a href="#delivery">التوصيل</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="location.href='#products'">استكشف المنتجات</button>
+                <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>كل ما تحتاجه <span>في مكان واحد</span></h1>
+                <p>متجرك المتكامل في قطاع غزة والضفة الغربية. اكتشف تشكيلة واسعة ومتنوعة من المنتجات العالية الجودة، واطلبها بكل سهولة ويُسر.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn-primary">تصفّح المنتجات</a>
+                    <a href="#contact" class="btn-secondary">تواصل معنا</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 12px; text-align: center; border: 2px dashed rgba(255,255,255,0.2);">
+                    <i class="fa-solid fa-store" style="font-size: 5rem; color: var(--orange); margin-bottom: 1rem;"></i>
+                    <p style="color: #CBD5E1; font-weight: 600;">AOADAGGA STORE Showcase</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories" id="categories">
+        <div class="section-title">
+            <h2>تصفح حسب الفئات</h2>
+            <p>اختر الفئة التي تبحث عنها لاستعراض أحدث المنتجات المتوفرة</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <i class="fa-solid fa-laptop"></i>
+                <h3>الإلكترونيات</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-house-chimney"></i>
+                <h3>المنزل والمطبخ</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-shirt"></i>
+                <h3>الأزياء والإكسسوارات</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-child-reaching"></i>
+                <h3>منتجات الأطفال</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-spa"></i>
+                <h3>العناية الشخصية</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products">
+        <div class="section-title">
+            <h2>المنتجات المميزة</h2>
+            <p>نماذج تجريبية للمنتجات المعروضة في المتجر</p>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                <div class="product-body">
+                    <h3>منتج تجريبي 1</h3>
+                    <p>وصف مختصر يوضح الميزة الأساسية للمنتج واستخداماته المتعددة.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">يُحدد عند الطلب</span>
+                    <button class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="alert('يرجى التواصل عبر واتساب لمعرفة السعر والتوفر الحالي.')">عرض التفاصيل</button>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                <div class="product-body">
+                    <h3>منتج تجريبي 2</h3>
+                    <p>وصف مختصر يوضح الميزة الأساسية للمنتج واستخداماته المتعددة.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">يُحدد عند الطلب</span>
+                    <button class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="alert('يرجى التواصل عبر واتساب لمعرفة السعر والتوفر الحالي.')">عرض التفاصيل</button>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                <div class="product-body">
+                    <h3>منتج تجريبي 3</h3>
+                    <p>وصف مختصر يوضح الميزة الأساسية للمنتج واستخداماته المتعددة.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">يُحدد عند الطلب</span>
+                    <button class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="alert('يرجى التواصل عبر واتساب لمعرفة السعر والتوفر الحالي.')">عرض التفاصيل</button>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-box-open"></i></div>
+                <div class="product-body">
+                    <h3>منتج تجريبي 4</h3>
+                    <p>وصف مختصر يوضح الميزة الأساسية للمنتج واستخداماته المتعددة.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">يُحدد عند الطلب</span>
+                    <button class="btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="alert('يرجى التواصل عبر واتساب لمعرفة السعر والتوفر الحالي.')">عرض التفاصيل</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="why-us">
+        <div class="section-title">
+            <h2>لماذا متجر AOADAGGA؟</h2>
+            <p>نعمل لتوفير تجربة تسوق واضحة وموثوقة</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-box">
+                <i class="fa-solid fa-compass"></i>
+                <h3>سهولة الاستكشاف</h3>
+                <p>تنوع واسع من المنتجات المرتبة بعناية لتجد ما تحتاجه بكل سرعة وسهولة.</p>
+            </div>
+            <div class="why-box">
+                <i class="fa-solid fa-eye"></i>
+                <h3>تجربة واضحة وبسيطة</h3>
+                <p>واجهة مستخدم نظيفة وخالية من التعقيدات والنوافذ المزعجة أو الخصومات الوهمية.</p>
+            </div>
+            <div class="why-box">
+                <i class="fa-solid fa-comments"></i>
+                <h3>تواصل مباشر ومرن</h3>
+                <p>إمكانية الاستفسار عن أي منتج وتقديم طلباتك بكل سهولة عبر قنوات التواصل المباشرة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order -->
+    <section id="how-to-order">
+        <div class="section-title">
+            <h2>كيف تطلب؟</h2>
+            <p>خطوات بسيطة للحصول على منتجاتك المفضلة</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>اختر المنتج</h3>
+                <p>تصفح الفئات والمنتجات المتنوعة واختر ما يناسب احتياجك.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>اطّلع على التفاصيل</h3>
+                <p>تأكد من مواصفات المنتج والتوفر الحالي والسعر.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>تواصل وأرسل طلبك</h3>
+                <p>راسلنا عبر قنوات الاتصال المتاحة وأرسل تفاصيل المنتج المطلوب.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>تأكيد الطلب</h3>
+                <p>مراجعة تفاصيل التوصيل والطلب نهائياً قبل إتمامه.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Information -->
+    <section>
+        <div class="delivery-section" id="delivery">
+            <h2>معلومات التوصيل في قطاع غزة والضفة الغربية</h2>
+            <p>نحرص على دراسة إمكانية التوصيل السريع إلى المنزل في مناطق تواجد عملائنا. يمكنك دائماً التواصل معنا للاستفسار عن مناطق التغطية الحالية، مواعيد التوصيل، والتكاليف المرتبطة بها بناءً على منطقتك.</p>
+            <a href="#contact" class="btn-primary" style="background-color: var(--orange);">استفسر عن التغطية الآن</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <div class="section-title">
+            <h2>الأسئلة الشائعة</h2>
+            <p>إجابات سريعة حول الخدمات والطلبات</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">كيف أطلب منتجًا؟ <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">يمكنك استعراض المنتجات ثم التواصل معنا مباشرة عبر وسائل الاتصال المتاحة في الموقع لتحديد المنتج وإرسال طلبك.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف أعرف السعر والتوفر؟ <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">نظراً لتغير توفر المخزون، يمكنك مراسلتنا مباشرة للاستعلام عن السعر الفعلي وحالة توفر المنتج في الوقت الحالي.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">هل تتوفر خدمة التوصيل إلى منطقتي؟ <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">نخدم مناطق في قطاع غزة والضفة الغربية، ونرجو التواصل معنا لتأكيد إمكانية التوصيل لمنطقتك بالتحديد.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كم تستغرق عملية التوصيل؟ <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">تختلف مدة التوصيل حسب المنطقة وظروف العمل الميداني، وسيتم تزويدك بالمدة التقريبية عند تأكيد تفاصيل الطلب.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف أتواصل مع المتجر؟ <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="faq-answer">يمكنك التواصل معنا بكل سهولة عبر روابط واتساب أو مسنجر المتاحة في أسفل الصفحة.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>AOADAGGA STORE</h3>
+                <p>كل ما تحتاجه في مكان واحد. وجهتك الموثوقة للتسوق المتنوع في فلسطين.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#categories">الفئات</a></li>
+                    <li><a href="#products">المنتجات المميزة</a></li>
+                    <li><a href="#how-to-order">كيف تطلب</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>السياسات</h3>
+                <ul>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">سياسة الاستبدال والاسترجاع</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AOADAGGA STORE. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ & Mobile Menu -->
+    <script>
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Mobile Menu Toggle (Placeholder logic)
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'var(--navy)';
+                navLinks.style.width = '100%';
+                navLinks.style.padding = '1.5rem';
+                navLinks.style.boxShadow = '0 10px 10px rgba(0,0,0,0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
